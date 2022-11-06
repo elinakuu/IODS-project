@@ -4,10 +4,23 @@
 *Write a short description about the course and add a link to your GitHub repository here. This is an R Markdown (.Rmd) file so you should use R Markdown syntax.*
 
 ```{r}
-# This is a so-called "R chunk" where you can write R code.
 
 date()
 
+'It was exciting to start the course as I am very curious. My background isnt that technical, so it will be a tough course for me. Nevertheless I am highly motivated. I find both books really good and well structured. I am still learning how to find supporting material for writing R markdown. I was not able to digest all information, so I will need to come back to the chapters.'
+
+'For the beginning, the clinic I visited on Thursday and the help I received was excellent. However I would suggest tutoring groups for inexperienced students to get a bit more informal support along the course and to reduce the burden from the teaching and tutoring team.'
+
+'I played around with the exercises. I encountered also some challenges such as not being able to limit the countries to Europe only. So, there is a looot to do and learn.'
+
+
+'This is a good start :)'
+
+'Here are the links to my github: https://github.com/elinakuu/IODS-project/blob/master/Exercise1.Rmd and https://github.com/elinakuu/elina'
+
+
+
 ```
-The text continues here. this is update
+
+
 

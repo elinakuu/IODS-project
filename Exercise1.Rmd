@@ -12,7 +12,7 @@ output:
     number_section: false
 ---
 
-This R Markdown sheet includes a quite large set of R code chunks taken from the RHDS book **R for Health Data Science** by Ewen Harrison and Riinu Pius (CRC Press, 2021), available online at <https://argoshare.is.ed.ac.uk/healthyr_book/>. The structure follows the structure of the book (chapters 2, 3, 4, 5, 6, and 8 and their sections and subsections).
+This R Markdown sheet includes a quite large set of R code chunks taken from the RHDS book **R for Health Data Science** by Ewen Harrison and Riinu Pius (CRC Press, 2021), available online at <https://argoshare.is.ed.ac.uk/healthyr_book/>. The structure follows the structure of the book (chapters 2, 3, 4, 5, 6, and 8 and their sections and subsections).  
 
 The goal is to get familiar with R and R Markdown (in a quite quick pace) using typical R functions for data wrangling, visualization, and analysis. You do not need to do very much (yet), mostly just read or browse the book while following and exploring the work flow in RStudio, activating the R functions and studying the output (results, statistics, graphics etc.) that will be created (including some tiny errors that are included on purpose). There are also some small exercises, where you are encouraged to write a bit of R code yourself (based on the hints given in the book). You may well skip those exercises.
 
@@ -149,6 +149,10 @@ my_datetime
 # error that is explained in the book... (you may put '#' in front of it)
 my_datetime - current_datetime
 
+# add: my_datetime_converted <- ymd_hm(my_datetime)
+# add: my_datetime_converted
+
+
 current_datetime %>% class()
 my_datetime %>% class()
 ```
@@ -170,6 +174,8 @@ ymd_hm("2021-01-02 12:00") + my_datesdiff
 # another error challenge here... (again you may put '#' in front of that afterwards)
 560/my_datesdiff
 560/as.numeric(my_datesdiff)
+
+# add: 560/as.numeric(my_datesdiff)
 ```
 
 2.2.4 continued...
@@ -278,7 +284,7 @@ gbd_short %>%
 ```{r}
 # do you see what is wrong here? (you may fix it or hide it with '#' afterwards)
 gbd_short %>% 
- filter(year = 1995)
+ filter(year == 1995)
 
 gbd_short %>% 
   filter(year == 1995 | year == 2017)
@@ -1036,6 +1042,12 @@ Look at Figure 4.13 on the page <https://argoshare.is.ed.ac.uk/healthyr_book/bar
 
 ```{r}
 
+gapdata2007 %>% 
+   
+  ggplot(aes(x = lifeExp, y = fct_reorder(country, lifeExp))) +
+  geom_col(colour = "deepskyblue") 
+
+
 ```
 
 ## 4.7 Histograms
@@ -1109,6 +1121,29 @@ gapdata2007 %>%
 ```
 
 Try the suggested experiments given on page <https://argoshare.is.ed.ac.uk/healthyr_book/multiple-geoms-multiple-aes.html> with the R code above. (Copy-paste the above code chunk below to experiment with it!)
+```{r}
+
+label_data <- gapdata2007 %>% 
+  group_by(continent) %>% 
+  filter(lifeExp == max(lifeExp)) %>% 
+  select(country, continent, lifeExp)
+
+# since we filtered for lifeExp == max(lifeExp)
+# these are the maximum life expectancy countries at each continent:
+label_data
+
+gapdata2007 %>% 
+  ggplot(aes(x = continent, y = lifeExp)) +
+  # First geom - boxplot
+  geom_boxplot() +
+  # Second geom - jitter with its own aes(colour = )
+  geom_jitter(aes(colour = continent)) +
+  # Third geom - label, with its own dataset (label_data) and aes(label = )
+  geom_label(data = label_data, aes(label = lifeExp))
+
+
+```
+
 
 ## 4.10 All other types of plots
 
