@@ -16,7 +16,7 @@ date()
 
 'This is a good start :)'
 
-'Here are the links to my github: https://github.com/elinakuu/IODS-project/ and https://elinakuu.github.io/IODS-project/ but the diary is not working so you find it under the first link if I dont get it work.'
+'Here are the links to my github: https://github.com/elinakuu/IODS-project/ and https://elinakuu.github.io/IODS-project/ but the diary is not working so you find it under the first link if I dont get it work. '
 
 
 
